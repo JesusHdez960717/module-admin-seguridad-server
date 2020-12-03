@@ -1,0 +1,17 @@
+rootProject.name = 'module-admin-seguridad-server'
+
+include ':clean-core-full'
+project(':clean-core-full').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\clean-core-full" as File
+
+include ':utils-spring'
+project(':utils-spring').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\utils-spring" as File
+
+include ':utils-core'
+project(':utils-core').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\utils-core" as File
+
+include ':module-util-mysql'
+project(':module-util-mysql').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-util-mysql" as File
+
+include ':module-admin-seguridad-standard'
+project(':module-admin-seguridad-standard').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-admin-seguridad-standard" as File
+
