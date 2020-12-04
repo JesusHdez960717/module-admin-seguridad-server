@@ -16,6 +16,8 @@ public class SeguridadCoreInjectionConfig extends AbstractModule {
     protected void configure() {
         bind(RolUseCase.class).to(RolUseCaseImpl.class).in(Singleton.class);
         bind(UsuarioUseCase.class).to(UsuarioUseCaseImpl.class).in(Singleton.class);
+        bind(GrantTypeUseCase.class).to(GrantTypeUseCaseImpl.class).in(Singleton.class);
+        bind(ClienteUseCase.class).to(ClienteUseCaseImpl.class).in(Singleton.class);
     }
 
 }
