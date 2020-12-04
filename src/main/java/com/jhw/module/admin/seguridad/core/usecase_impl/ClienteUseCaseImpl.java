@@ -14,4 +14,9 @@ public class ClienteUseCaseImpl extends DefaultCRUDUseCase<ClienteDomain> implem
         super.setRepo(repo);
     }
 
+    @Override
+    public ClienteDomain loadClientByName(String client) throws Exception {
+        return repo.loadClientByName(client);
+    }
+
 }
