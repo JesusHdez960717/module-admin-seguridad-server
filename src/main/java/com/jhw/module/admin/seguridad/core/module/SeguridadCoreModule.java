@@ -4,6 +4,7 @@ import com.clean.core.app.modules.AbstractModule;
 import com.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.jhw.module.admin.seguridad.repo.module.SeguridadRepoModule;
 
 /**
  * Modulo de Seguridad-Core-Server
@@ -21,6 +22,15 @@ public class SeguridadCoreModule extends DefaultAbstractModule {
             throw new NullPointerException("El modulo de Seguridad-Core-Server no se ha inicializado");
         }
         return INSTANCE;
+    }
+
+    public static SeguridadCoreModule init() {
+        if (INSTANCE != null) {
+            return INSTANCE;
+        }
+        INSTANCE = new SeguridadCoreModule();
+        INSTANCE.registerModule(SeguridadRepoModule.init());
+        return getInstance();
     }
 
     public static SeguridadCoreModule init(AbstractModule repoModule) {
