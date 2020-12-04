@@ -18,7 +18,8 @@ public class UsuarioRepoImpl extends JPACleanCRUDRepo<UsuarioDomain, Usuario> im
     public UsuarioDomain loadUserByUsername(String username) throws Exception {
         EntityManager em = getEntityManager();
         try {
-            Usuario user = em.createNamedQuery("Usuario.findByUsername", Usuario.class).getSingleResult();
+            Usuario user = em.createNamedQuery("Usuario.findByUsername", Usuario.class)
+                    .setParameter("username", username).getSingleResult();
             return ConverterService.convert(user, UsuarioDomain.class);
         } finally {//lanza excepcion sino, para capturarla mas adelante y lanzar la excepcion de spring
             em.close();
