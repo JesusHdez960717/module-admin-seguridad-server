@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.jhw.module.admin.seguridad.repo.entities.Rol</class>
     <class>com.jhw.module.admin.seguridad.repo.entities.Usuario</class>
+    <class>com.jhw.module.admin.seguridad.repo.entities.Cliente</class>
+    <class>com.jhw.module.admin.seguridad.repo.entities.GrantType</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/sigecon_gasto?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

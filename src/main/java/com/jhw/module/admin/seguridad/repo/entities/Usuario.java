@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -42,43 +44,47 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_user", nullable = false)
     private Integer idUser;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "username", nullable = false, length = 50)
     private String username;
-    
-    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")
+
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 64)
     @Column(name = "password", nullable = false, length = 64)
     private String password;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 64)
     @Column(name = "salt", nullable = false, length = 64)
     private String salt;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(max = 1000)
     @Column(name = "descripcion", nullable = false, length = 1000)
     private String descripcion;
+
+    @JoinColumn(name = "rol_fk", referencedColumnName = "id_rol", nullable = false)
+    @ManyToOne(optional = false)
+    private Rol rolFk;
 
     public Usuario() {
     }
@@ -87,13 +93,14 @@ public class Usuario implements Serializable {
         this.idUser = idUser;
     }
 
-    public Usuario(Integer idUser, String username, String email, String password, String salt, String descripcion) {
+    public Usuario(Integer idUser, String username, String email, String password, String salt, String descripcion, Rol rolFk) {
         this.idUser = idUser;
         this.username = username;
         this.email = email;
         this.password = password;
         this.salt = salt;
         this.descripcion = descripcion;
+        this.rolFk = rolFk;
     }
 
     public Integer getIdUser() {
@@ -142,6 +149,14 @@ public class Usuario implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Rol getRolFk() {
+        return rolFk;
+    }
+
+    public void setRolFk(Rol rolFk) {
+        this.rolFk = rolFk;
     }
 
     @Override

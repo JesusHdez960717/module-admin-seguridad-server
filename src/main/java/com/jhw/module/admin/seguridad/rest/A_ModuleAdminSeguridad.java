@@ -18,7 +18,7 @@ import com.jhw.module.admin.seguridad.service.ResourceServiceImplementation;
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
 @Component
-public class A_ModuleGestionGastos {
+public class A_ModuleAdminSeguridad {
 
     public static final String BASE_PACKAGE = "com.jhw.module.admin.seguridad";
 
