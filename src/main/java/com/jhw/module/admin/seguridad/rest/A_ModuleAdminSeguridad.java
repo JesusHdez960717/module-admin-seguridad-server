@@ -29,7 +29,7 @@ public class A_ModuleAdminSeguridad {
         ResourceServiceServerImplementation.init();
         ResourceServiceImplementation.init();
 
-        SeguridadCoreModule.init(SeguridadRepoModule.init());
+        SeguridadCoreModule.init();
 
         usuarioUC = SeguridadCoreModule.getInstance().getImplementation(UsuarioUseCase.class);
         rolUC = SeguridadCoreModule.getInstance().getImplementation(RolUseCase.class);
