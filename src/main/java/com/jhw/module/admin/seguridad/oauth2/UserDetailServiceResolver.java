@@ -7,8 +7,12 @@ package com.jhw.module.admin.seguridad.oauth2;
 
 import com.jhw.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
+import com.jhw.module.admin.seguridad.permission.ClaimsKeys;
 import com.jhw.module.admin.seguridad.rest.A_ModuleAdminSeguridad;
 import com.jhw.module.authorization_server.oauth2.user.UserDetailServiceAdapter;
+import java.util.LinkedHashMap;
+import com.jhw.module.authorization_server.oauth2.jwt.JwtEnhancers;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +29,7 @@ public class UserDetailServiceResolver implements UserDetailServiceAdapter<Usuar
     @Autowired
     public UserDetailServiceResolver(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
+        enhance();
     }
 
     @Override
@@ -36,9 +41,24 @@ public class UserDetailServiceResolver implements UserDetailServiceAdapter<Usuar
     public UserDetails convert(UsuarioDomain ususario) {
         return User.builder()
                 .username(ususario.getUsername())
-                .password(passwordEncoder.encode(ususario.getPublicPassword()))
+                .passwordEncoder(passwordEncoder::encode)
+                .password(ususario.getPublicPassword())
                 .roles(ususario.getRolFk().getNombreRol())
                 .build();
     }
 
+    private void enhance() {
+        JwtEnhancers.addAdditionalInformation((user) -> {
+            Map<String, Object> map = new LinkedHashMap<>();
+            try {
+                String username = user.getName();
+                UsuarioDomain userDomain = loadUserByUsername(username);
+
+                map.put(ClaimsKeys.PRIMARY_KEY_KEY, userDomain.getIdUser());
+                map.put(ClaimsKeys.ACCESS_LEVEL_KEY, userDomain.getRolFk().getNivelAcceso());
+            } catch (Exception e) {
+            }
+            return map;
+        });
+    }
 }
