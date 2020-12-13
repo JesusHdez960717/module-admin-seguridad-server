@@ -6,11 +6,11 @@
 package com.jhw.module.admin.seguridad.rest;
 
 import com.jhw.module.admin.seguridad.core.module.SeguridadCoreModule;
+import com.jhw.module.admin.seguridad.core.usecase_def.ClienteUseCase;
 import com.jhw.module.admin.seguridad.service.ResourceServiceServerImplementation;
 import org.springframework.stereotype.Component;
 import com.jhw.module.admin.seguridad.core.usecase_def.RolUseCase;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
-import com.jhw.module.admin.seguridad.repo.module.SeguridadRepoModule;
 import com.jhw.module.admin.seguridad.service.ResourceServiceImplementation;
 
 /**
@@ -24,14 +24,16 @@ public class A_ModuleAdminSeguridad {
 
     public final static UsuarioUseCase usuarioUC;
     public final static RolUseCase rolUC;
+    public final static ClienteUseCase clienteUC;
 
     static {
         ResourceServiceServerImplementation.init();
         ResourceServiceImplementation.init();
 
-        SeguridadCoreModule.init(SeguridadRepoModule.init());
+        SeguridadCoreModule.init();
 
         usuarioUC = SeguridadCoreModule.getInstance().getImplementation(UsuarioUseCase.class);
         rolUC = SeguridadCoreModule.getInstance().getImplementation(RolUseCase.class);
+        clienteUC = SeguridadCoreModule.getInstance().getImplementation(ClienteUseCase.class);
     }
 }

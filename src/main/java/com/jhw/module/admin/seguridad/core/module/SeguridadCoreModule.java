@@ -33,6 +33,14 @@ public class SeguridadCoreModule extends DefaultAbstractModule {
         return getInstance();
     }
 
+    /**
+     * Usar init() sin repo por parametro para usar el repo por defecto
+     *
+     * @param repoModule
+     * @return
+     * @deprecated
+     */
+    @Deprecated
     public static SeguridadCoreModule init(AbstractModule repoModule) {
         INSTANCE = new SeguridadCoreModule();
         INSTANCE.registerModule(repoModule);

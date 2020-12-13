@@ -15,3 +15,7 @@ project(':module-util-mysql').projectDir = "E:\\Trabajos\\Projects\\GIT Projects
 include ':module-admin-seguridad-standard'
 project(':module-admin-seguridad-standard').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-admin-seguridad-standard" as File
 
+
+include ':module-authorization_server-oauth2'
+project(':module-authorization_server-oauth2').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\module-authorization_server-oauth2" as File
+
