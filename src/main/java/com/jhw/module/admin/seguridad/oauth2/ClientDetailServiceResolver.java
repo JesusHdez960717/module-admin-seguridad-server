@@ -9,22 +9,13 @@ import com.jhw.module.admin.seguridad.core.domain.ClienteDomain;
 import com.jhw.module.admin.seguridad.core.usecase_def.ClienteUseCase;
 import com.jhw.module.admin.seguridad.rest.A_ModuleAdminSeguridad;
 import com.jhw.module.authorization_server.oauth2.client.ClientDetailServiceAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ClientDetailServiceResolver implements ClientDetailServiceAdapter<ClienteDomain> {
 
-    private final PasswordEncoder passwordEncoder;
-
     private final ClienteUseCase clienteUC = A_ModuleAdminSeguridad.clienteUC;
-
-    @Autowired
-    public ClientDetailServiceResolver(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Override
     public ClienteDomain loadClientByClientId(String clientId) throws Exception {
@@ -33,7 +24,7 @@ public class ClientDetailServiceResolver implements ClientDetailServiceAdapter<C
 
     @Override
     public ClientDetails convert(ClienteDomain client) {
-        return ClientDetailsWrapper.from(passwordEncoder, client);
+        return ClientDetailsWrapper.from(client);
     }
 
 }

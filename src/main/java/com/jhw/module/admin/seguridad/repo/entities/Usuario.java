@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
     @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password"),
-    @NamedQuery(name = "Usuario.findBySalt", query = "SELECT u FROM Usuario u WHERE u.salt = :salt"),
     @NamedQuery(name = "Usuario.findByDescripcion", query = "SELECT u FROM Usuario u WHERE u.descripcion = :descripcion")})
 public class Usuario implements Serializable {
 
@@ -72,12 +71,6 @@ public class Usuario implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 64)
-    @Column(name = "salt", nullable = false, length = 64)
-    private String salt;
-
-    @Basic(optional = false)
-    @NotNull
     @Size(max = 1000)
     @Column(name = "descripcion", nullable = false, length = 1000)
     private String descripcion;
@@ -93,12 +86,11 @@ public class Usuario implements Serializable {
         this.idUser = idUser;
     }
 
-    public Usuario(Integer idUser, String username, String email, String password, String salt, String descripcion, Rol rolFk) {
+    public Usuario(Integer idUser, String username, String email, String password, String descripcion, Rol rolFk) {
         this.idUser = idUser;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.salt = salt;
         this.descripcion = descripcion;
         this.rolFk = rolFk;
     }
@@ -133,14 +125,6 @@ public class Usuario implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public String getDescripcion() {
