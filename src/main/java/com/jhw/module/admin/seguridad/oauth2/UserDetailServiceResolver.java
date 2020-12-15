@@ -13,22 +13,16 @@ import com.jhw.module.authorization_server.oauth2.user.UserDetailServiceAdapter;
 import java.util.LinkedHashMap;
 import com.jhw.module.authorization_server.oauth2.jwt.JwtEnhancers;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserDetailServiceResolver implements UserDetailServiceAdapter<UsuarioDomain> {
 
-    private final PasswordEncoder passwordEncoder;
-
     private final UsuarioUseCase usuarioUC = A_ModuleAdminSeguridad.usuarioUC;
 
-    @Autowired
-    public UserDetailServiceResolver(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    public UserDetailServiceResolver() {
         enhance();
     }
 
@@ -38,12 +32,11 @@ public class UserDetailServiceResolver implements UserDetailServiceAdapter<Usuar
     }
 
     @Override
-    public UserDetails convert(UsuarioDomain ususario) {
+    public UserDetails convert(UsuarioDomain usuario) {
         return User.builder()
-                .username(ususario.getUsername())
-                .passwordEncoder(passwordEncoder::encode)
-                .password(ususario.getPublicPassword())
-                .roles(ususario.getRolFk().getNombreRol())
+                .username(usuario.getUsername())
+                .password(usuario.getPublicPassword())
+                .roles(usuario.getRolFk().getNombreRol())
                 .build();
     }
 

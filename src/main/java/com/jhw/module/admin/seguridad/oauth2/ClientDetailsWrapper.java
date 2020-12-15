@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 /**
@@ -25,17 +24,14 @@ public class ClientDetailsWrapper implements ClientDetails {
 
     public static final String SCOPES = "all";
 
-    public final static ClientDetailsWrapper from(PasswordEncoder passwordEncoder, ClienteDomain client) {
-        return new ClientDetailsWrapper(passwordEncoder, client);
+    public final static ClientDetailsWrapper from(ClienteDomain client) {
+        return new ClientDetailsWrapper(client);
     }
 
     private final ClienteDomain client;
 
-    private final PasswordEncoder passwordEncoder;
-
-    public ClientDetailsWrapper(PasswordEncoder passwordEncoder, ClienteDomain client) {
+    public ClientDetailsWrapper(ClienteDomain client) {
         this.client = client;
-        this.passwordEncoder = passwordEncoder;
     }
 
     private Collection<String> split(String text) {
@@ -54,7 +50,7 @@ public class ClientDetailsWrapper implements ClientDetails {
 
     @Override
     public String getClientSecret() {
-        return passwordEncoder.encode(client.getSecret());
+        return client.getSecret();
     }
 
     @Override
