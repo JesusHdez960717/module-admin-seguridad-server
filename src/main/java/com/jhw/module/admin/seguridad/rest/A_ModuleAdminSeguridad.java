@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.jhw.module.admin.seguridad.core.usecase_def.RolUseCase;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
 import com.jhw.module.admin.seguridad.service.ResourceServiceImplementation;
+import com.jhw.module.admin.seguridad.service.UserResolverServiceImplementation;
 
 /**
  *
@@ -28,6 +29,7 @@ public class A_ModuleAdminSeguridad {
 
     static {
         ResourceServiceServerImplementation.init();
+        UserResolverServiceImplementation.init();
         ResourceServiceImplementation.init();
 
         SeguridadCoreModule.init();
