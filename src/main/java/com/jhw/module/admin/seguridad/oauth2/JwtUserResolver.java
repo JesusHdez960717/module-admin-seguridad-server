@@ -17,17 +17,26 @@ import org.springframework.security.core.context.SecurityContextHolder;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-public class UserAuthResolver {
+public class JwtUserResolver {
 
-    private final static UsuarioUseCase usuarioUC = A_ModuleAdminSeguridad.usuarioUC;
+    private static final JwtUserResolver INSTANCE = new JwtUserResolver();
 
-    public static UsuarioDomain resolveUser() throws Exception {
+    public static JwtUserResolver getINSTANCE() {
+        return INSTANCE;
+    }
+
+    private final UsuarioUseCase usuarioUC = A_ModuleAdminSeguridad.usuarioUC;
+
+    private JwtUserResolver() {
+    }
+
+    public UsuarioDomain resolveUser() throws Exception {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         org.springframework.security.oauth2.jwt.Jwt jwt = (org.springframework.security.oauth2.jwt.Jwt) auth.getPrincipal();
         return _resolveUser(jwt);
     }
 
-    public static int resolveAccessLevel() {
+    public int resolveAccessLevel() {
         try {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             org.springframework.security.oauth2.jwt.Jwt jwt = (org.springframework.security.oauth2.jwt.Jwt) auth.getPrincipal();
@@ -42,7 +51,7 @@ public class UserAuthResolver {
         }
     }
 
-    private static UsuarioDomain _resolveUser(org.springframework.security.oauth2.jwt.Jwt jwt) throws Exception {
+    private UsuarioDomain _resolveUser(org.springframework.security.oauth2.jwt.Jwt jwt) throws Exception {
         if (jwt.containsClaim(ClaimsKeys.PRIMARY_KEY_KEY)) {//lo busco por la llave
             Integer pk = ConverterService.convert((Object) jwt.getClaim(ClaimsKeys.PRIMARY_KEY_KEY), Integer.class);
             return usuarioUC.findBy(pk);
