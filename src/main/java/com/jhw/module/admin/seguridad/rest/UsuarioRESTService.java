@@ -26,7 +26,7 @@ public class UsuarioRESTService extends RESTServiceTemplate<UsuarioDomain> imple
     }
 
     @Override
-    //@GetMapping() Sin mapping, no se necesita
+    @GetMapping(USUARIO_FIND_BY_USERNAME)
     public UsuarioDomain loadUserByUsername(String username) throws Exception {
         return usuarioUC.loadUserByUsername(username);
     }
