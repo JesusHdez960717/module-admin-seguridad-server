@@ -35,7 +35,7 @@ public class UserDetailServiceResolver implements UserDetailServiceAdapter<Usuar
     public UserDetails convert(UsuarioDomain usuario) {
         return User.builder()
                 .username(usuario.getUsername())
-                .password(usuario.getPublicPassword())
+                .password(usuario.getPassword())
                 .roles(usuario.getRolFk().getNombreRol())
                 .build();
     }
