@@ -15,6 +15,10 @@ repositories {
 dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: '5.2.9.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version: '5.2.9.RELEASE'
+
+    //para bcrypt
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.1'
+    
     testImplementation 'junit:junit:4.13'
 
     implementation project(':utils-core')
