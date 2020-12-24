@@ -7,10 +7,13 @@ package com.jhw.module.admin.seguridad.rest;
 
 import com.jhw.module.admin.seguridad.core.module.SeguridadCoreModule;
 import com.jhw.module.admin.seguridad.core.usecase_def.ClienteUseCase;
+import com.jhw.module.admin.seguridad.core.usecase_def.GrantTypeUseCase;
 import com.jhw.module.admin.seguridad.service.ResourceServiceServerImplementation;
 import org.springframework.stereotype.Component;
 import com.jhw.module.admin.seguridad.core.usecase_def.RolUseCase;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
+import com.jhw.module.admin.seguridad.core.usecase_impl.init.ClienteInitializer;
+import com.jhw.module.admin.seguridad.core.usecase_impl.init.UsuarioInitializer;
 import com.jhw.module.admin.seguridad.service.ResourceServiceImplementation;
 import com.jhw.module.admin.seguridad.service.UserResolverServiceImplementation;
 
@@ -37,5 +40,8 @@ public class A_ModuleAdminSeguridad {
         usuarioUC = SeguridadCoreModule.getInstance().getImplementation(UsuarioUseCase.class);
         rolUC = SeguridadCoreModule.getInstance().getImplementation(RolUseCase.class);
         clienteUC = SeguridadCoreModule.getInstance().getImplementation(ClienteUseCase.class);
+
+        UsuarioInitializer.init(usuarioUC, rolUC);
+        ClienteInitializer.init(clienteUC, SeguridadCoreModule.getInstance().getImplementation(GrantTypeUseCase.class));
     }
 }

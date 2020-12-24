@@ -4,6 +4,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.jhw.module.admin.seguridad.core.usecase_def.*;
 import com.jhw.module.admin.seguridad.core.usecase_impl.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Configuracion del injection del modulo de seguridad-core.
@@ -18,6 +20,8 @@ public class SeguridadCoreInjectionConfig extends AbstractModule {
         bind(UsuarioUseCase.class).to(UsuarioUseCaseImpl.class).in(Singleton.class);
         bind(GrantTypeUseCase.class).to(GrantTypeUseCaseImpl.class).in(Singleton.class);
         bind(ClienteUseCase.class).to(ClienteUseCaseImpl.class).in(Singleton.class);
+
+        bind(PasswordEncoder.class).to(BCryptPasswordEncoder.class).in(Singleton.class);
     }
 
 }
