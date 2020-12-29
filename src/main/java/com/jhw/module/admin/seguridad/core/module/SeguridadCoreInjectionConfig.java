@@ -1,9 +1,9 @@
 package com.jhw.module.admin.seguridad.core.module;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.jhw.module.admin.seguridad.core.usecase_def.*;
 import com.jhw.module.admin.seguridad.core.usecase_impl.*;
+import com.jhw.module.util.licence.core.injection.LicenceInjectionConfig;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -12,10 +12,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  *
  * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
  */
-public class SeguridadCoreInjectionConfig extends AbstractModule {
+public class SeguridadCoreInjectionConfig extends LicenceInjectionConfig {
 
     @Override
     protected void configure() {
+        super.configure();//configura la licencia
+        
         bind(RolUseCase.class).to(RolUseCaseImpl.class).in(Singleton.class);
         bind(UsuarioUseCase.class).to(UsuarioUseCaseImpl.class).in(Singleton.class);
         bind(GrantTypeUseCase.class).to(GrantTypeUseCaseImpl.class).in(Singleton.class);
