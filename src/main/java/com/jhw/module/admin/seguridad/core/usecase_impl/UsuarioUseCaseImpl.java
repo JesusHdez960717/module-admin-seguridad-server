@@ -2,6 +2,7 @@ package com.jhw.module.admin.seguridad.core.usecase_impl;
 
 import com.clean.core.app.usecase.DefaultCRUDUseCase;
 import com.clean.core.domain.services.Resource;
+import com.clean.core.utils.Licenced;
 import com.jhw.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.jhw.module.admin.seguridad.core.module.SeguridadCoreModule;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
@@ -21,6 +22,7 @@ public class UsuarioUseCaseImpl extends DefaultCRUDUseCase<UsuarioDomain> implem
 
     //+ encoder al password
     @Override
+    @Licenced
     public UsuarioDomain edit(UsuarioDomain objectToUpdate) throws Exception {
         UsuarioDomain old = findBy(objectToUpdate.getIdUser());
         if (!old.getUsername().equals(objectToUpdate.getUsername())) {
@@ -32,6 +34,7 @@ public class UsuarioUseCaseImpl extends DefaultCRUDUseCase<UsuarioDomain> implem
 
     //+ encoder al password
     @Override
+    @Licenced
     public UsuarioDomain create(UsuarioDomain newObject) throws Exception {
         newObject.setPassword(encoder.encode(newObject.getPassword()));
         return super.create(newObject);
