@@ -27,7 +27,7 @@ import javax.persistence.Persistence;
  */
 public class ResourcesSeguridad {
 
-    public static final String SCHEMA = "admin_seguridad";
+    public static final String SCHEMA = "root101_admin_seguridad";
 
     public static EntityManagerFactory EMF;
 
