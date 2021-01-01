@@ -2,12 +2,12 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="SeguridadPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.jhw.module.admin.seguridad.repo.entities.Rol</class>
-    <class>com.jhw.module.admin.seguridad.repo.entities.Usuario</class>
-    <class>com.jhw.module.admin.seguridad.repo.entities.Cliente</class>
-    <class>com.jhw.module.admin.seguridad.repo.entities.GrantType</class>
+    <class>com.root101.module.admin.seguridad.repo.entities.Rol</class>
+    <class>com.root101.module.admin.seguridad.repo.entities.Usuario</class>
+    <class>com.root101.module.admin.seguridad.repo.entities.Cliente</class>
+    <class>com.root101.module.admin.seguridad.repo.entities.GrantType</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/sigecon_gasto?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:7733/root101_admin_seguridad?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
