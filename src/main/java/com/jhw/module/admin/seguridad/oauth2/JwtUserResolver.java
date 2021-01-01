@@ -9,7 +9,7 @@ import com.jhw.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
 import com.jhw.module.admin.seguridad.permission.ClaimsKeys;
 import com.jhw.module.admin.seguridad.rest.A_ModuleAdminSeguridad;
-import com.jhw.utils.services.ConverterService;
+import com.root101.utils.services.ConverterService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

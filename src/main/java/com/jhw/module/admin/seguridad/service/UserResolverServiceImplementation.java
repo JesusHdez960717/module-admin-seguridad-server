@@ -5,8 +5,8 @@
  */
 package com.jhw.module.admin.seguridad.service;
 
-import com.clean.core.app.services.UserResolver;
-import com.clean.core.app.services.UserResolverService;
+import com.root101.clean.core.app.services.UserResolver;
+import com.root101.clean.core.app.services.UserResolverService;
 import com.jhw.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.jhw.module.admin.seguridad.oauth2.JwtUserResolver;
 

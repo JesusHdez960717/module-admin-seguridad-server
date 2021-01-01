@@ -5,7 +5,7 @@
  */
 package com.jhw.module.admin.seguridad.permission;
 
-import com.clean.core.app.services.UserResolver;
+import com.root101.clean.core.app.services.UserResolver;
 import org.springframework.stereotype.Component;
 
 /**

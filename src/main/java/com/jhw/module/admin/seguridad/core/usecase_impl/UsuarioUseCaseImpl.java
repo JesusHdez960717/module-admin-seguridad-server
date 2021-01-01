@@ -1,8 +1,8 @@
 package com.jhw.module.admin.seguridad.core.usecase_impl;
 
-import com.clean.core.app.usecase.DefaultCRUDUseCase;
-import com.clean.core.domain.services.Resource;
-import com.clean.core.utils.Licenced;
+import com.root101.clean.core.app.usecase.DefaultCRUDUseCase;
+import com.root101.clean.core.domain.services.ResourceHandler;
+import com.root101.clean.core.utils.Licenced;
 import com.jhw.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.jhw.module.admin.seguridad.core.module.SeguridadCoreModule;
 import com.jhw.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
@@ -26,7 +26,7 @@ public class UsuarioUseCaseImpl extends DefaultCRUDUseCase<UsuarioDomain> implem
     public UsuarioDomain edit(UsuarioDomain objectToUpdate) throws Exception {
         UsuarioDomain old = findBy(objectToUpdate.getIdUser());
         if (!old.getUsername().equals(objectToUpdate.getUsername())) {
-            throw new UnsupportedOperationException(Resource.getString(ResourceKeys.MSG_ERROR_USER_CANT_EDIT));
+            throw new UnsupportedOperationException(ResourceHandler.getString(ResourceKeys.MSG_ERROR_USER_CANT_EDIT));
         }
         objectToUpdate.setPassword(encoder.encode(objectToUpdate.getPassword()));
         return super.edit(objectToUpdate);

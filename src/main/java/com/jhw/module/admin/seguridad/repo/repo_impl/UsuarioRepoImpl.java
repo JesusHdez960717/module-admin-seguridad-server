@@ -3,9 +3,9 @@ package com.jhw.module.admin.seguridad.repo.repo_impl;
 import com.jhw.module.admin.seguridad.core.domain.*;
 import com.jhw.module.admin.seguridad.repo.entities.*;
 import com.jhw.module.admin.seguridad.repo.utils.ResourcesSeguridad;
-import com.jhw.utils.jpa.JPACleanCRUDRepo;
+import com.root101.repo.jpa.JPACleanCRUDRepo;
 import com.jhw.module.admin.seguridad.core.repo_def.UsuarioRepo;
-import com.jhw.utils.services.ConverterService;
+import com.root101.utils.services.ConverterService;
 import javax.persistence.EntityManager;
 
 public class UsuarioRepoImpl extends JPACleanCRUDRepo<UsuarioDomain, Usuario> implements UsuarioRepo {

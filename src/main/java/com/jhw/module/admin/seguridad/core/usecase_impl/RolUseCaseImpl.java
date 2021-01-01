@@ -1,6 +1,6 @@
 package com.jhw.module.admin.seguridad.core.usecase_impl;
 
-import com.clean.core.app.usecase.DefaultCRUDUseCase;
+import com.root101.clean.core.app.usecase.DefaultCRUDUseCase;
 import com.jhw.module.admin.seguridad.core.domain.*;
 import com.jhw.module.admin.seguridad.core.module.SeguridadCoreModule;
 import com.jhw.module.admin.seguridad.core.usecase_def.*;
