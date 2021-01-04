@@ -27,7 +27,7 @@ dependencies {
     
     implementation project(':module-util-mysql')
     
-    implementation project(':module-util-licence-server')
+    implementation project(':module-control-licence-server')
     
     implementation project(':module-admin-seguridad-standard')
     

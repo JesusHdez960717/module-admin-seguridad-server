@@ -18,7 +18,7 @@ package com.root101.module.admin.seguridad.core.module;
 
 import com.google.inject.Singleton;
 import com.root101.module.admin.seguridad.core.usecase_def.*;
-import com.jhw.module.util.licence.core.injection.LicenceInjectionConfig;
+import com.root101.module.control.licence.core.injection.LicenceInjectionConfig;
 import com.root101.module.admin.seguridad.core.usecase_impl.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
