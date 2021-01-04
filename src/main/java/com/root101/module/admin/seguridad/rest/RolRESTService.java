@@ -16,7 +16,7 @@
  */
 package com.root101.module.admin.seguridad.rest;
 
-import static com.root101.module.admin.seguridad.core.ModuleAdminSeguridadConstants.*;
+import static com.root101.module.admin.seguridad.rest.ModuleAdminSeguridadRESTConstants.*;
 import com.root101.module.admin.seguridad.core.domain.*;
 import com.root101.module.admin.seguridad.core.usecase_def.*;
 import com.jhw.utils.spring.server.*;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = ROL_GENERAL_PATH)
 public class RolRESTService extends RESTServiceTemplate<RolDomain> implements RolUseCase {
 
-    private final RolUseCase rolUC = A_ModuleAdminSeguridad.rolUC;
+    private final RolUseCase rolUC = A_ModuleAdminSeguridadRESTConfig.rolUC;
 
     public RolRESTService() {
         setUseCase(rolUC);
