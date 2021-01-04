@@ -25,6 +25,7 @@ import com.root101.module.admin.seguridad.core.usecase_def.RolUseCase;
 import com.root101.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
 import com.root101.module.admin.seguridad.core.usecase_impl.init.ClienteInitializer;
 import com.root101.module.admin.seguridad.core.usecase_impl.init.UsuarioInitializer;
+import com.root101.module.admin.seguridad.repo.module.SeguridadRepoModule;
 import com.root101.module.admin.seguridad.service.ResourceServiceImplementation;
 import com.root101.module.admin.seguridad.service.UserResolverServiceImplementation;
 
@@ -34,7 +35,7 @@ import com.root101.module.admin.seguridad.service.UserResolverServiceImplementat
  * @author JesusHdezWaterloo@Github
  */
 @Component
-public class A_ModuleAdminSeguridad {
+public class A_ModuleAdminSeguridadRESTConfig {
 
     public static final String BASE_PACKAGE = "com.root101.module.admin.seguridad";
 
@@ -47,7 +48,7 @@ public class A_ModuleAdminSeguridad {
         UserResolverServiceImplementation.init();
         ResourceServiceImplementation.init();
 
-        SeguridadCoreModule.init();
+        SeguridadCoreModule.init(SeguridadRepoModule.init());
 
         usuarioUC = SeguridadCoreModule.getInstance().getImplementation(UsuarioUseCase.class);
         rolUC = SeguridadCoreModule.getInstance().getImplementation(RolUseCase.class);
