@@ -4,7 +4,7 @@ plugins {
 
 group = 'com.root101.module.admin'
 
-version = '1.9.9.SNAPSHOT.20210101'
+version = '12.0.0.SNAPSHOT.20210108'
 
 repositories {
     jcenter()
@@ -41,5 +41,5 @@ dependencies {
     
     //injection
     compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
-    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    
 }

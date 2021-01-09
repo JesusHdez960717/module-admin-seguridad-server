@@ -33,7 +33,7 @@ public class SeguridadCoreInjectionConfig extends LicenceInjectionConfig {
     @Override
     protected void configure() {
         super.configure();//configura la licencia
-        
+
         bind(RolUseCase.class).to(RolUseCaseImpl.class).in(Singleton.class);
         bind(UsuarioUseCase.class).to(UsuarioUseCaseImpl.class).in(Singleton.class);
         bind(GrantTypeUseCase.class).to(GrantTypeUseCaseImpl.class).in(Singleton.class);

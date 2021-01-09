@@ -16,10 +16,10 @@
  */
 package com.root101.module.admin.seguridad.rest;
 
+import com.root101.spring.server.RESTServiceTemplate;
 import static com.root101.module.admin.seguridad.rest.ModuleAdminSeguridadRESTConstants.*;
 import com.root101.module.admin.seguridad.core.domain.*;
 import com.root101.module.admin.seguridad.core.usecase_def.*;
-import com.jhw.utils.spring.server.*;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -49,6 +49,5 @@ public class RolRESTService extends RESTServiceTemplate<RolDomain> implements Ro
     public ColumnaDomain findLast() throws Exception {
         return rolUC.findLast();
     }
-    */
-    
+     */
 }

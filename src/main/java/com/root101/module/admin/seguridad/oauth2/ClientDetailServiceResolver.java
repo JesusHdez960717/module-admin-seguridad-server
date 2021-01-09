@@ -19,7 +19,7 @@ package com.root101.module.admin.seguridad.oauth2;
 import com.root101.module.admin.seguridad.core.domain.ClienteDomain;
 import com.root101.module.admin.seguridad.core.usecase_def.ClienteUseCase;
 import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridadRESTConfig;
-import com.jhw.module.authorization_server.oauth2.client.ClientDetailServiceAdapter;
+import com.root101.module.authorization_server.oauth2.client.ClientDetailServiceAdapter;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.stereotype.Component;
 
