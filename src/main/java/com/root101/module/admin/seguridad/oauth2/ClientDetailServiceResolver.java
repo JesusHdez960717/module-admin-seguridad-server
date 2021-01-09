@@ -18,8 +18,8 @@ package com.root101.module.admin.seguridad.oauth2;
 
 import com.root101.module.admin.seguridad.core.domain.ClienteDomain;
 import com.root101.module.admin.seguridad.core.usecase_def.ClienteUseCase;
-import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridad;
-import com.jhw.module.authorization_server.oauth2.client.ClientDetailServiceAdapter;
+import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridadRESTConfig;
+import com.root101.module.authorization_server.oauth2.client.ClientDetailServiceAdapter;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClientDetailServiceResolver implements ClientDetailServiceAdapter<ClienteDomain> {
 
-    private final ClienteUseCase clienteUC = A_ModuleAdminSeguridad.clienteUC;
+    private final ClienteUseCase clienteUC = A_ModuleAdminSeguridadRESTConfig.clienteUC;
 
     @Override
     public ClienteDomain loadClientByClientId(String clientId) throws Exception {

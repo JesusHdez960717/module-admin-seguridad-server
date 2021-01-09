@@ -19,7 +19,11 @@ package com.root101.module.admin.seguridad.repo.module;
 import com.root101.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.root101.clean.core.domain.services.ResourceHandler;
+import com.root101.clean.core.exceptions.AlreadyInitModule;
+import com.root101.clean.core.exceptions.NotInitModule;
 import com.root101.module.admin.seguridad.repo.utils.ResourcesSeguridad;
+import com.root101.module.admin.seguridad.service.ResourceKeys;
 
 /**
  *
@@ -38,12 +42,15 @@ public class SeguridadRepoModule extends DefaultAbstractModule {
 
     public static SeguridadRepoModule getInstance() {
         if (INSTANCE == null) {
-            throw new NullPointerException("El modulo de Seguridad Repo Server no se ha inicializado");
+            throw new NotInitModule(ResourceHandler.getString(ResourceKeys.MSG_ERROR_USER_CANT_EDIT));
         }
         return INSTANCE;
     }
 
     public static SeguridadRepoModule init() {
+        if (INSTANCE != null) {
+            throw new AlreadyInitModule(ResourceHandler.getString(ResourceKeys.MSG_ERROR_USER_CANT_EDIT));
+        }
         INSTANCE = new SeguridadRepoModule();
         return getInstance();
     }

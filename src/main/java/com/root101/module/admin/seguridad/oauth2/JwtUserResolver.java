@@ -19,7 +19,7 @@ package com.root101.module.admin.seguridad.oauth2;
 import com.root101.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.root101.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
 import com.root101.module.admin.seguridad.permission.ClaimsKeys;
-import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridad;
+import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridadRESTConfig;
 import com.root101.utils.services.ConverterService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,7 +37,7 @@ public class JwtUserResolver {
         return INSTANCE;
     }
 
-    private final UsuarioUseCase usuarioUC = A_ModuleAdminSeguridad.usuarioUC;
+    private final UsuarioUseCase usuarioUC = A_ModuleAdminSeguridadRESTConfig.usuarioUC;
 
     private JwtUserResolver() {
     }

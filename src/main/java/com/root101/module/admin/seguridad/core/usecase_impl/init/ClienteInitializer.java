@@ -37,7 +37,7 @@ public class ClienteInitializer {
     public static void init(ClienteUseCase clienteUC, GrantTypeUseCase grantTypeUC) {
         try {
             if (clienteUC.count() == 0) {//si no hay ningun usuario
-                GrantTypeInitializer.init(grantTypeUC);//inicio los roles
+                GrantTypeInitializer.init(grantTypeUC);//inicio los grant type
 
                 cleinteDEFAULT.setGrantTypesFk(grantTypeUC.findAll().get(0));//le pongo el primer rol al berro
 

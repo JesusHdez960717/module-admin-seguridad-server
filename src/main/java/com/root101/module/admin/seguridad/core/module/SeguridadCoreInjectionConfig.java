@@ -18,7 +18,7 @@ package com.root101.module.admin.seguridad.core.module;
 
 import com.google.inject.Singleton;
 import com.root101.module.admin.seguridad.core.usecase_def.*;
-import com.jhw.module.util.licence.core.injection.LicenceInjectionConfig;
+import com.root101.module.control.licence.core.injection.LicenceInjectionConfig;
 import com.root101.module.admin.seguridad.core.usecase_impl.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +33,7 @@ public class SeguridadCoreInjectionConfig extends LicenceInjectionConfig {
     @Override
     protected void configure() {
         super.configure();//configura la licencia
-        
+
         bind(RolUseCase.class).to(RolUseCaseImpl.class).in(Singleton.class);
         bind(UsuarioUseCase.class).to(UsuarioUseCaseImpl.class).in(Singleton.class);
         bind(GrantTypeUseCase.class).to(GrantTypeUseCaseImpl.class).in(Singleton.class);

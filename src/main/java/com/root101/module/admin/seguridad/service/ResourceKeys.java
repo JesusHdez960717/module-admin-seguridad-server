@@ -24,4 +24,7 @@ package com.root101.module.admin.seguridad.service;
 public class ResourceKeys {
 
     public static final String MSG_ERROR_USER_CANT_EDIT = "msg.error.user.cant_edit";
+
+    public static final String KEY_MODULE_NAME_SEG = "com.root101.module.admin.seguridad.name";
+
 }
