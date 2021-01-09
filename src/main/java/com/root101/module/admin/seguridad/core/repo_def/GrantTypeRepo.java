@@ -18,6 +18,7 @@ package com.root101.module.admin.seguridad.core.repo_def;
 
 import com.root101.clean.core.app.repo.CRUDRepository;
 import com.root101.module.admin.seguridad.core.domain.*;
+
 /**
  *
  * @author Root101 (jhernandezb96@gmail.com, +53-5-426-8660)

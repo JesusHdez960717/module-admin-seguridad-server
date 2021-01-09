@@ -19,10 +19,10 @@ package com.root101.module.admin.seguridad.oauth2;
 import com.root101.module.admin.seguridad.core.domain.UsuarioDomain;
 import com.root101.module.admin.seguridad.core.usecase_def.UsuarioUseCase;
 import com.root101.module.admin.seguridad.permission.ClaimsKeys;
-import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridad;
-import com.jhw.module.authorization_server.oauth2.user.UserDetailServiceAdapter;
+import com.root101.module.admin.seguridad.rest.A_ModuleAdminSeguridadRESTConfig;
+import com.root101.module.authorization_server.oauth2.user.UserDetailServiceAdapter;
 import java.util.LinkedHashMap;
-import com.jhw.module.authorization_server.oauth2.jwt.JwtEnhancers;
+import com.root101.module.authorization_server.oauth2.jwt.JwtEnhancers;
 import java.util.Map;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.User;
@@ -36,7 +36,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDetailServiceResolver implements UserDetailServiceAdapter<UsuarioDomain> {
 
-    private final UsuarioUseCase usuarioUC = A_ModuleAdminSeguridad.usuarioUC;
+    private final UsuarioUseCase usuarioUC = A_ModuleAdminSeguridadRESTConfig.usuarioUC;
 
     public UserDetailServiceResolver() {
         enhance();

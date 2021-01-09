@@ -20,7 +20,10 @@ import com.root101.clean.core.app.modules.AbstractModule;
 import com.root101.clean.core.app.modules.DefaultAbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.root101.module.admin.seguridad.repo.module.SeguridadRepoModule;
+import com.root101.clean.core.domain.services.ResourceHandler;
+import com.root101.clean.core.exceptions.AlreadyInitModule;
+import com.root101.clean.core.exceptions.NotInitModule;
+import com.root101.module.admin.seguridad.service.ResourceKeys;
 
 /**
  *
@@ -35,18 +38,9 @@ public class SeguridadCoreModule extends DefaultAbstractModule {
 
     public static SeguridadCoreModule getInstance() {
         if (INSTANCE == null) {
-            throw new NullPointerException("El modulo de Seguridad-Core-Server no se ha inicializado");
+            throw new NotInitModule(ResourceHandler.getString(ResourceKeys.MSG_ERROR_USER_CANT_EDIT));
         }
         return INSTANCE;
-    }
-
-    public static SeguridadCoreModule init() {
-        if (INSTANCE != null) {
-            return INSTANCE;
-        }
-        INSTANCE = new SeguridadCoreModule();
-        INSTANCE.registerModule(SeguridadRepoModule.init());
-        return getInstance();
     }
 
     /**
@@ -56,8 +50,10 @@ public class SeguridadCoreModule extends DefaultAbstractModule {
      * @return
      * @deprecated
      */
-    @Deprecated
     public static SeguridadCoreModule init(AbstractModule repoModule) {
+        if (INSTANCE != null) {
+            throw new AlreadyInitModule(ResourceHandler.getString(ResourceKeys.MSG_ERROR_USER_CANT_EDIT));
+        }
         INSTANCE = new SeguridadCoreModule();
         INSTANCE.registerModule(repoModule);
         return getInstance();
